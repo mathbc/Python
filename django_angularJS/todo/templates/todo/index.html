@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo List</title>
+
+    <!-- Última versão CSS compilada e minificada -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Tema opcional -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body ng-app="toDo" ng-controller="toDoController">
+    <div class="container">
+        <h1>To do List</h1>
+        <form ng-submit="todoAdd()">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="Informe uma tarefa" ng-model="todoInput">
+                    </div>
+                    <button type="submit" ng-click="saveData()" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span> 
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </form>
+        <hr>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-compresed table-hover table-striped"> 
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Tarefa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="todo in todoList">
+                            <td>
+                                <input type="checkbox" ng-model="todo.done">
+                            </td>
+                            <td ng-bind="todo.todo_text"></td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+        <button class="btn btn-danger delete-button" ng-click="remove()">
+            <span class="glyphicon glyphicon-trash"></span>
+            Remover
+        </button>
+    </div>
+    <!-- Última versão JavaScript compilada e minificada -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="{% static 'js/todo.js' %}"></script>
+</body>
+
+</html>
