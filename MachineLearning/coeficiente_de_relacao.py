@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 '''
- Calculo simples de regressão linear
+ Calculo simples de coeficiente regressão linear
 
     - Uma empresa resolveu estudar a variação de demanda de seu produto em função do preço
     de venda praticado.
